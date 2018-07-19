@@ -1,0 +1,47 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field form-group">
+    <%= f.label :username, "用户名" %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :email, "邮箱" %><br />
+    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :password, "变更密码" %> <small>(如果不想变更密码,留空)</small><br />
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    <% if @minimum_password_length %>
+      <small>(最少<%= @minimum_password_length %> 个字母或数字)</small>
+    <% end %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password_confirmation, "确认密码" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :current_password, "当前密码" %> <small>(如修改账户信息，必须验证当前密码)</small><br />
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新", class:"btn btn-primary btn-sm"%>
+  </div>
+<% end %>
+<hr>
+<h5>关闭账户设置：</h5>
+<br>
+<p>不喜欢? <span><%= link_to "关闭账号", registration_path(resource_name), data: { confirm: "真的要离开?" }, method: :delete, class:"btn btn-warning btn-sm"%><span></p>
+
+<%= link_to "返回", :back %>

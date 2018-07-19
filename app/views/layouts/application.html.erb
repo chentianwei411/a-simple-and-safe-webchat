@@ -17,10 +17,10 @@
         <div class="col-sm-2 bg-light" style="position: fixed; top:80px; left:0; height: 100%;">
           <h5 style="margin-top: 20px;">聊天室：</h5>
           <% if user_signed_in? %>
-            <ul>
+            <ul class="list-group">
               <% current_user.chatrooms.each do |chatroom| %>
                 <!-- 增加2个data-*属性 -->
-                <li><%= link_to chatroom.name, chatroom_path(chatroom), data: {behavior:"chatroom-link", chatroom_id: chatroom.id}%></li>
+                <li class="list-group-item"><%= link_to chatroom.name, chatroom_path(chatroom), data: {behavior:"chatroom-link", chatroom_id: chatroom.id}%></li>
               <% end %>
             </ul>
           <% end %>

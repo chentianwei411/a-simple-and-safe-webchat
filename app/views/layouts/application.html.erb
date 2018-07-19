@@ -10,6 +10,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial:"common/navbar" %>
+
+    <div class="container-fluid" style="margin-top: 100px;">
+      <div class="row">
+        <div class="col-sm-2 bg-light" style="position: fixed; top:80px; left:0; height: 100%;">
+          <h5 style="margin-top: 20px;">聊天室：</h5>
+          <% if user_signed_in? %>
+            <ul>
+              <% current_user.chatrooms.each do |chatroom| %>
+                <!-- 增加2个data-*属性 -->
+                <li><%= link_to chatroom.name, chatroom_path(chatroom), data: {behavior:"chatroom-link", chatroom_id: chatroom.id}%></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col offset-sm-2">
+        <%= yield%>
+      </div>
+    </div>
+
   </body>
 </html>

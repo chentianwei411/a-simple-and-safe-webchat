@@ -1,0 +1,33 @@
+<nav class="navbar bg-light navbar-light navbar-expand-sm fixed-top">
+  <div class="container-fluid">
+    <%= link_to "WeChat", root_path, class: "navbar-brand"%>
+
+    <button type="button" class="navbar-toggler" data-toggler="collapse" data-target='#navbar-collapse-1' aria-expaned="false">
+      <span class="sr-only navbar-toggler-icon">Toggle navigation</span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <div class="navbar-nav mr-auto">
+        <%= link_to "首页", root_path, class: "nav-item nav-link"%>
+      </div>
+
+      <div class="navbar-nav">
+        <% if user_signed_in? %>
+          <div class="dropdown nav-item nav-link">
+            <a href="#" class="dropdown-toggle mr-1" data-toggle="dropdown">
+              <%= current_user.username %> <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to content_tag(:i, "设置", class:"fas fa-cog"), edit_user_registration_path, class:"dropdown-item" %>
+              <div role="separator" class="divider"></div>
+              <%= link_to content_tag(:i, "登出", class:"fas fa-sign-out-alt"), destroy_user_session_path, method: :delete, class:"dropdown-item"%>
+            </div>
+          </div>
+        <% else %>
+          <%= link_to content_tag(:i, "注册", class:"fas fa-user-alt"), new_user_registration_path, class:"nav-item nav-link" %>
+          <%= link_to content_tag(:i, "登入", class:"fas fa-sign-in-alt"), new_user_session_path, class:"nav-item nav-link" %>
+        <% end %>
+      </div>
+    </div><!-- /.nav-collapse -->
+  </div>
+</nav>

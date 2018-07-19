@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong>聊天室：</strong>
   <%= @chatroom.name %>
 </p>
 
-<%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
-<%= link_to 'Back', chatrooms_path %>
+<%= link_to '更新', edit_chatroom_path(@chatroom) %> |
+<%= link_to '返回', chatrooms_path %>

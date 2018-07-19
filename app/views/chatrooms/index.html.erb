@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Chatrooms</h1>
+<h1>私密聊天室</h1>
 
 <table class="table table-hover">
   <thead class="table-dark">
     <tr>
       <th>#</th>
       <th>聊天室</th>
-      <th colspan="3">选项</th>
+      <th>选项</th>
+      <th>其它</th>
     </tr>
   </thead>
 
@@ -17,9 +18,15 @@
       <tr>
         <td><%= n %></td>
         <td><%= chatroom.name %></td>
-        <td><%= link_to 'Show', chatroom %></td>
-        <td><%= link_to 'Edit', edit_chatroom_path(chatroom) %></td>
-        <td><%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <!-- 需要添加method -->
+          <%= link_to "进入聊天室", chatroom_chatroom_users_path(chatroom), method: :post%> |
+          <%= link_to "离开聊天室", chatroom_chatroom_users_path(chatroom), method: :delete, data: {confirm: "离开这个聊天室？"}%>
+        </td>
+        <td>
+          <%= link_to '详细', chatroom %> |
+          <%= link_to '删除', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
       <% n += 1%>
     <% end %>
@@ -28,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Chatroom', new_chatroom_path %>
+<%= link_to '新建聊天室', new_chatroom_path %>

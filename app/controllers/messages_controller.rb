@@ -6,7 +6,18 @@ class MessagesController < ApplicationController
     message = @chatroom.messages.new(params_message)
     message.user_id = current_user.id
     message.save!
-    redirect_to chatroom_path(@chatroom)
+    # respond_to :js
+    # respond_to do |format|
+    #   if message.save
+    #     # (5.2提示unknownFormat?)
+    #     format.js
+    #     # format.html { redirect_to @chatroom }
+    #     # format.json { render :show, status: :created, location: @chatroom }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @chatroom.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   private

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :chatrooms do
     # 不需要涉及chatroom_users的id，用resource
     resource :chatroom_users, only: [:create, :destroy]
+    resources :messages
   end
 
   devise_for :users

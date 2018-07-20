@@ -3,5 +3,29 @@
   <%= @chatroom.name %>
 </p>
 
-<%= link_to '更新', edit_chatroom_path(@chatroom) %> |
-<%= link_to '返回', chatrooms_path %>
+<div data-behavior="messages">
+  <!-- 降序排列，取前100条记录，反转，最新的对话显示在最下面。 -->
+  <% @messages.each do |message| %>
+    <div>
+      <strong><%= message.user.username %>:</strong>
+      <%= message.body %>
+    </div>
+  <% end %>
+</div>
+
+
+
+<div style="position: fixed; bottom:1px; width:80% ">
+  <div>
+    <%= link_to '更新', edit_chatroom_path(@chatroom) %> |
+    <%= link_to '返回', chatrooms_path %>
+  </div>
+  <%= form_with(model: [@chatroom, Message.new], id: "new_message") do |f| %>
+    <div class="input-group mb-2">
+      <%= f.text_area :body, rows: 1, class: "form-control", autofocus: true, placeholder: "输入..."%>
+      <!-- <div class="input-group-append">
+        <%= f.submit "发送", class: "input-group-text"%>
+      </div> -->
+    </div>
+  <% end %>
+</div>

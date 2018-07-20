@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
     message = @chatroom.messages.new(params_message)
     message.user_id = current_user.id
     message.save!
+    MessageRelayJobJob.perform_later(message)
     # respond_to :js
     # respond_to do |format|
     #   if message.save

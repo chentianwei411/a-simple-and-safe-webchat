@@ -17,11 +17,12 @@
     <%= link_to '更新', edit_chatroom_path(@chatroom) %> |
     <%= link_to '返回', chatrooms_path %>
   </div>
-  <%= form_with(model: [@chatroom, Message.new], id: "new_message") do |f| %>
+  <%= form_with(model: [@chatroom, Message.new], id: "new_message", local: true) do |f| %>
     <div class="input-group mb-2">
       <%= f.text_area :body, rows: 1, class: "form-control", autofocus: true, placeholder: "输入..."%>
       <div class="input-group-append">
-        <%= f.submit "发送", class: "input-group-text"%>
+        <!-- 注意：改变了button的type -->
+        <%= f.button "发送", class: "input-group-text", type:"button", id: "button-message"%>
       </div>
     </div>
   <% end %>

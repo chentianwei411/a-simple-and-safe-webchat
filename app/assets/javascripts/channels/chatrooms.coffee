@@ -11,3 +11,6 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
     y = document.createElement("div")
     document.getElementById("chatroom-#{data.chatroom_id}").appendChild(y)
     document.getElementById("chatroom-#{data.chatroom_id}").lastChild.innerHTML = data.message
+
+  send_message: (chatroom_id, message) ->
+    @perform "send_message", {chatroom_id: chatroom_id, body: message}

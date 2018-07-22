@@ -1,25 +1,14 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_chatroom
-
-  def create
-    message = @chatroom.messages.new(params_message)
-    message.user_id = current_user.id
-    message.save!
-    MessageRelayJobJob.perform_later(message)
-    # respond_to :js
-    # respond_to do |format|
-    #   if message.save
-    #     # (5.2提示unknownFormat?)
-    #     format.js
-    #     # format.html { redirect_to @chatroom }
-    #     # format.json { render :show, status: :created, location: @chatroom }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @chatroom.errors, status: :unprocessable_entity }
-    #   end
-    # end
-  end
+  
+  # 改用actioncable创建数据：
+  # def create
+  #   message = @chatroom.messages.new(params_message)
+  #   message.user_id = current_user.id
+  #   message.save!
+  #   MessageRelayJobJob.perform_later(message)
+  # end
 
   private
 

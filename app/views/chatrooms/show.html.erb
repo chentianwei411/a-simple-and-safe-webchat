@@ -3,7 +3,7 @@
   <%= @chatroom.name %>
 </p>
 
-<div data-behavior="messages" id="chatroom-<%= @chatroom.id %>" style="margin-bottom:100px;">
+<div data-behavior="messages" data-chatroom-id="<%= @chatroom.id %>" id="chatroom-<%= @chatroom.id %>" style="margin-bottom:100px;">
   <!-- 降序排列，取前100条记录，反转，最新的对话显示在最下面。 -->
   <% @messages.each do |message| %>
     <%= render message %>

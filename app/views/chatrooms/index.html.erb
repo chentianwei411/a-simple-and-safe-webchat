@@ -24,8 +24,7 @@
           <%= link_to "离开聊天室", chatroom_chatroom_users_path(chatroom), method: :delete, data: {confirm: "离开这个聊天室？"}%>
         </td>
         <td>
-          <%= link_to '详细', chatroom %> |
-          <%= link_to '删除记录', chatroom, method: :delete, data: { confirm: '确认删除个人聊天记录？' } %>
+          <%= link_to '删除个人聊天记录', clear_chatroom_messages_path(chatroom), method: :delete, data: { confirm: '删除的个人记录不可恢复。确认删除？' } %>
         </td>
       </tr>
       <% n += 1%>

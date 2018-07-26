@@ -55,13 +55,13 @@ class ChatroomsController < ApplicationController
 
   # DELETE /chatrooms/1
   # DELETE /chatrooms/1.json
-  def destroy
-    @chatroom.destroy
-    respond_to do |format|
-      format.html { redirect_to chatrooms_url, notice: 'Chatroom was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @chatroom.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to chatrooms_url, notice: '删除成功！' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

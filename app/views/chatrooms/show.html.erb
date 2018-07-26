@@ -5,7 +5,13 @@
 
 <div data-behavior="messages" data-chatroom-id="<%= @chatroom.id %>" id="chatroom-<%= @chatroom.id %>" style="margin-bottom:100px;">
   <!-- 降序排列，取前100条记录，反转，最新的对话显示在最下面。 -->
+  <% unread_message_line = true %>
   <% @messages.each do |message| %>
+    <!-- 如果message的created_at大于chatroom_user中的last_read_at则，在这条message上面添加提示红线 -->
+    <% if unread_message_line && message.created_at > @chatroom_user.last_read_at %>
+      <div class="strike"><span>未读信息</span></div>
+      <% unread_message_line = false %>
+    <% end %>
     <%= render message %>
   <% end %>
 </div>

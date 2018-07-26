@@ -3,11 +3,11 @@ class ChatroomUsersController < ApplicationController
   before_action :set_chatroom
 
   def create
-
     if @chatroom.chatroom_users.exists?(user_id: current_user.id)
       @chatroom_user = @chatroom.chatroom_users.find_by(user_id:current_user.id)
     else
-      @chatroom_user = @chatroom.chatroom_users.create(user_id: current_user.id)
+      @chatroom_user = @chatroom.chatroom_users.new(user_id: current_user.id, last_read_at: Time.zone.now)
+      @chatroom_user.save!
     end
 
     redirect_to @chatroom

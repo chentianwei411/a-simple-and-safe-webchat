@@ -7,5 +7,6 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  # 部署修改：
+  url: <%= ENV.fetch("REDIS_URL") { "redis://47.92.195.194" } %>
   channel_prefix: Wechat_production

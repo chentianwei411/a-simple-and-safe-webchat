@@ -39,6 +39,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'devise'
 gem 'font-awesome-sass'
+gem 'rake'
 gem 'redis'
 gem 'pg'
 

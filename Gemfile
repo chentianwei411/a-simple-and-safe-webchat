@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-# source 'https://gems.ruby-china.com'
+# source 'https://rubygems.org'
+source 'https://gems.ruby-china.com'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'

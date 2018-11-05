@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #部署
-  mount ActionCable.server => "/chatrooms"
+  mount ActionCable.server => "/cable"
 
   resources :chatrooms do
     # 不需要涉及chatroom_users的id，用resource

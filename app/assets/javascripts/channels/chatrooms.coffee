@@ -36,4 +36,4 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
   send_message: (chatroom_id, message) ->
     @perform "send_message", {chatroom_id: chatroom_id, body: message}
 
-App.cable = ActionCable.createConsumer("/chatrooms")
+App.cable = ActionCable.createConsumer("/cable")
